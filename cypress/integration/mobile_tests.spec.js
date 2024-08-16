@@ -27,7 +27,7 @@ describe('Mobile E-commerce Tests', () => {
     it('Should add an item to the cart and verify', () => {
       cy.visitAndCheck('/', '#twotabsearchtextbox');
       cy.get('#twotabsearchtextbox').type('laptop{enter}');
-      cy.get('.s-main-slot .s-result-item[data-component-type="s-search-result"]').first().find('img').click();
+      cy.get('.s-main-slot .s-result-item[data-component-type="s-search-result"]').first().find('h2 a').click();
       cy.get('#add-to-cart-button').should('be.visible').click();
       cy.get('#nav-cart-count').should('contain', '1');
     });
