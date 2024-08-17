@@ -1,0 +1,142 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-08-17T00:57:08.059Z",
+    "end": "2024-08-17T00:57:46.742Z",
+    "duration": 38683,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d8e03f06-9542-4e99-bd3e-293ad67354e2",
+      "title": "",
+      "fullFile": "cypress\\integration\\desktop_spec.js",
+      "file": "cypress\\integration\\desktop_spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e5b3693c-7bc8-4516-9bf2-613cfbc13c97",
+          "title": "Rappi Ecommerce Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should search for a product and display relevant results",
+              "fullTitle": "Rappi Ecommerce Tests Should search for a product and display relevant results",
+              "timedOut": null,
+              "duration": 12906,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#input').type('Pizza{enter}'); // Busca 'Pizza' en la barra de búsqueda y presiona Enter\ncy.url().should('include', 'search?query=Pizza'); // Verifica que la URL contenga el término de búsqueda 'Pizza'\ncy.contains('Pizza').should('be.visible'); // Verifica que el término 'Pizza' sea visible en los resultados",
+              "err": {},
+              "uuid": "820dee32-1043-4585-9170-8427d408e825",
+              "parentUUID": "e5b3693c-7bc8-4516-9bf2-613cfbc13c97",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should filter search results by category",
+              "fullTitle": "Rappi Ecommerce Tests Should filter search results by category",
+              "timedOut": null,
+              "duration": 11716,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#input').type('Pizza{enter}'); // Busca 'Pizza' en la barra de búsqueda y presiona Enter\ncy.get('#order-dropdown').click(); // Abre el menú de filtros\ncy.get('[data-testid=\"typography\"]').contains('Costo de envío').click(); // Selecciona el filtro 'Costo de envío'\n// Verifica que el filtro de 'Costo de envío' se haya aplicado correctamente\ncy.get('.sc-dcJsrY.hdeavw').should('contain', 'Costo de envío');",
+              "err": {},
+              "uuid": "1d006451-453f-4437-9c50-0b4379059b0f",
+              "parentUUID": "e5b3693c-7bc8-4516-9bf2-613cfbc13c97",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should view product details from search results",
+              "fullTitle": "Rappi Ecommerce Tests Should view product details from search results",
+              "timedOut": null,
+              "duration": 10610,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#input').type('Pizza{enter}'); // Busca 'Pizza' en la barra de búsqueda y presiona Enter        \ncy.get('body').click(0, 0); // Hacer clic en un lugar fuera del modal si hay uno visible\ncy.get('.embla__slide').find('button').first().scrollIntoView().wait(500).click({\n  force: true\n});\n// Selecciona el primer producto en la lista de resultados\ncy.get('[data-qa=\"modal\"]').should('be.visible'); // Verifica que la ventana emergente con los detalles del producto sea visible",
+              "err": {},
+              "uuid": "71a44b31-6c59-4116-9db9-c9c076e028f1",
+              "parentUUID": "e5b3693c-7bc8-4516-9bf2-613cfbc13c97",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "820dee32-1043-4585-9170-8427d408e825",
+            "1d006451-453f-4437-9c50-0b4379059b0f",
+            "71a44b31-6c59-4116-9db9-c9c076e028f1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 35232,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "reportFilename": "report",
+        "timestamp": "yyyy-mm-dd-HH-MM-ss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
