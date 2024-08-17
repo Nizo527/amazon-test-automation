@@ -1,37 +1,42 @@
-describe('Mobile E-commerce Tests', () => {
-
+describe('Rappi Ecommerce Tests for Mobile', () => {
     beforeEach(() => {
-      // Configura la vista para un dispositivo móvil, por ejemplo, iPhone X
-      cy.viewport('iphone-x');
+        cy.viewport('iphone-6'); // Configura el viewport para simular un iPhone 6
+        cy.on('uncaught:exception', (err, runnable) => {
+            if (err.message.includes('Cache.addAll')) {
+                return false; // Ignorar este error
+            }
+            return true;
+        });
+
+        cy.visit('/'); // Navega a la página principal de Rappi antes de cada prueba
     });
-  
-    // Test 1: Verificación de la Barra de Navegación en Móvil
-    // Objetivo: Verificar que la barra de navegación esté visible y que el menú de navegación se despliegue correctamente en la vista móvil.
-    it('Should display the mobile navigation bar and open menu', () => {
-      cy.visitAndCheck('/', '#nav-hamburger-menu');
-      cy.get('#nav-hamburger-menu').should('be.visible').click();
-      cy.get('.hmenu-visible').should('be.visible');
+
+    // Prueba 1 de Búsqueda de Productos en Móvil
+    it('Should search for a product and display relevant results', () => {
+        cy.get('#input').type('Pizza{enter}'); // Busca 'Pizza' en la barra de búsqueda y presiona Enter
+        cy.url().should('include', 'search?query=Pizza'); // Verifica que la URL contenga el término de búsqueda 'Pizza'
+        cy.contains('Pizza').should('be.visible'); // Verifica que el término 'Pizza' sea visible en los resultados
     });
-  
-    // Test 2: Búsqueda de Productos y Verificación de Resultados
-    // Objetivo: Asegurarse de que la funcionalidad de búsqueda de productos funciona correctamente en la vista móvil.
-    it('Should search for a product and display results', () => {
-      cy.visitAndCheck('/', '#nav-search-bar-form');
-      cy.get('#nav-search-bar-form').should('be.visible');
-      cy.get('#twotabsearchtextbox').type('laptop{enter}');
-      cy.get('.s-main-slot .s-result-item').should('have.length.at.least', 1);
+
+    // Prueba 2 de Filtrado de Productos por Categoría en Móvil
+    it('Should filter search results by category', () => {
+        cy.get('#input').type('Pizza{enter}'); // Busca 'Pizza' en la barra de búsqueda y presiona Enter
+        cy.get('#order-dropdown').click(); // Abre el menú de filtros
+        cy.get('[data-testid="typography"]').contains('Costo de envío').click(); // Selecciona el filtro 'Costo de envío'
+        
+        // Verifica que el filtro de 'Costo de envío' se haya aplicado correctamente
+        cy.get('.sc-dcJsrY.hdeavw').should('contain', 'Costo de envío');   
     });
-  
-    // Test 3: Verificación del Carrito de Compras en Móvil
-    // Objetivo: Verificar que un usuario pueda añadir un producto al carrito en la vista móvil y que el carrito se actualice correctamente.
-    it('Should add an item to the cart and verify', () => {
-      cy.visitAndCheck('/', '#twotabsearchtextbox');
-      cy.get('#twotabsearchtextbox').type('laptop{enter}');
-      cy.get('.s-main-slot .s-result-item[data-component-type="s-search-result"]').first().find('h2 a').click();
-      cy.get('#add-to-cart-button').should('be.visible').click();
-      cy.get('#nav-cart-count').should('contain', '1');
+
+    // Prueba 3 Visualización de Detalles del Producto en Móvil
+    it('Should view product details from search results', () => {
+        cy.get('#input').type('Pizza{enter}'); // Busca 'Pizza' en la barra de búsqueda y presiona Enter        
+        cy.get('body').click(0, 0); // Hacer clic en un lugar fuera del modal si hay uno visible
+        cy.get('.embla__slide').find('button').first().scrollIntoView().wait(500).click({ force: true });
+        // Selecciona el primer producto en la lista de resultados
+        cy.get('[data-qa="modal"]').should('be.visible'); // Verifica que la ventana emergente con los detalles del producto sea visible
     });
-  
-  });  
+});
+
   
   

@@ -1,0 +1,142 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-08-16T20:04:10.430Z",
+    "end": "2024-08-16T20:04:37.533Z",
+    "duration": 27103,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ca26bbaf-357e-4f13-a3e8-8f23adae9345",
+      "title": "",
+      "fullFile": "cypress\\integration\\amazon_spec.js",
+      "file": "cypress\\integration\\amazon_spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "76f59de5-ff31-4538-8cc4-44884d749410",
+          "title": "Amazon Ecommerce Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should search for a product and display relevant results",
+              "fullTitle": "Amazon Ecommerce Tests Should search for a product and display relevant results",
+              "timedOut": null,
+              "duration": 9188,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// utilizo `visitAndCheck` para asegura que se acceda al dominio correcto, debido a redirecciones dinámicas por geolocalización de Amazon.\ncy.visitAndCheck('/', '#twotabsearchtextbox');\ncy.get('#twotabsearchtextbox').type('Laptop{enter}');\ncy.url().should('include', 'k=Laptop');\ncy.get('.s-main-slot').should('contain', 'Laptop');",
+              "err": {},
+              "uuid": "264181ac-f2c6-459a-9b8e-a21eb2b1a861",
+              "parentUUID": "76f59de5-ff31-4538-8cc4-44884d749410",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should sort search results by price from high to low",
+              "fullTitle": "Amazon Ecommerce Tests Should sort search results by price from high to low",
+              "timedOut": null,
+              "duration": 5225,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Utilizo `visitAndCheck` para asegura que se acceda al dominio correcto, debido a redirecciones dinámicas por geolocalización de Amazon.\ncy.visitAndCheck('https://www.amazon.com/s?k=Laptop', '.a-dropdown-prompt');\ncy.get('.a-dropdown-prompt').click();\ncy.get('.a-dropdown-item').contains('Price: High to Low').click();\n// Verificar que la URL se actualiza correctamente para reflejar el orden de precio de mayor a menor\ncy.url().should('include', 's=price-desc-rank');",
+              "err": {},
+              "uuid": "0e38b479-fb63-44f5-969e-09171610c308",
+              "parentUUID": "76f59de5-ff31-4538-8cc4-44884d749410",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should add a product to the cart",
+              "fullTitle": "Amazon Ecommerce Tests Should add a product to the cart",
+              "timedOut": null,
+              "duration": 12180,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Utilizo `visitAndCheck` para asegura que se acceda al dominio correcto, debido a redirecciones dinámicas por geolocalización de Amazon.\ncy.visitAndCheck('https://www.amazon.com/s?k=Laptop', '.s-main-slot .s-result-item[data-component-type=\"s-search-result\"]');\n// Seleccionar el primer producto\ncy.get('.s-main-slot .s-result-item[data-component-type=\"s-search-result\"]').first().find('h2 a').click();\ncy.get('#add-to-cart-button').click();\ncy.get('#nav-cart-count').should('contain', '1');",
+              "err": {},
+              "uuid": "022ef031-ae3c-42b2-8904-92e66a758cdc",
+              "parentUUID": "76f59de5-ff31-4538-8cc4-44884d749410",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "264181ac-f2c6-459a-9b8e-a21eb2b1a861",
+            "0e38b479-fb63-44f5-969e-09171610c308",
+            "022ef031-ae3c-42b2-8904-92e66a758cdc"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 26593,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "reportFilename": "report",
+        "timestamp": "yyyy-mm-dd-HH-MM-ss"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
