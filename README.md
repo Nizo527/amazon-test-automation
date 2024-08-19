@@ -14,7 +14,7 @@ Este repositorio contiene pruebas automatizadas para la plataforma Rappi, cubrie
 
 ## Metodología de Pruebas
 
-Las pruebas se configuran y ejecutan de la siguiente manera:
+Las pruebas se configuran y ejecutan para verificar:
 
 1. **Configuración del Entorno:**
    - Manejo de excepciones relacionadas con `Cache.addAll`.
@@ -25,27 +25,7 @@ Las pruebas se configuran y ejecutan de la siguiente manera:
    - **Escritorio:** Pruebas en la versión de escritorio de Rappi.
    - **Móvil:** Pruebas simulando un dispositivo iPhone 6.
 
-## Cómo Ejecutar las Pruebas
+## Evidencias
 
-1. **Clonar el Repositorio:**
-   ```bash
-   git clone https://github.com/tu-usuario/nombre-del-repositorio.git
-   cd nombre-del-repositorio
-
-**Instalar Dependencias:**
-npm install
-
-**Ejecutar las Pruebas:**
-npx cypress open
-
-**Selecciona las pruebas de escritorio o móvil según sea necesario.**
-
-**Evidencias**
-Videos de Pruebas: Se encuentran en la carpeta cypress/videos/.
-
-Video 1 - Pruebas de Escritorio: Captura las pruebas en la versión de escritorio.
-Video 2 - Pruebas de Móvil: Muestra las pruebas en la versión móvil.
-Reportes de Mochawesome: Se encuentran en la carpeta cypress/reports/.
-
-Reporte de Pruebas de Escritorio: Resumen de las pruebas de escritorio.
-Reporte de Pruebas de Móvil: Resumen de las pruebas móviles.
+- **Videos de Pruebas:** Disponibles en la carpeta `cypress/videos/`.
+- **Reportes de Mochawesome:** Disponibles en la carpeta `cypress/reports/`.

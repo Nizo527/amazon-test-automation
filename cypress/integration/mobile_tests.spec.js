@@ -1,9 +1,9 @@
 describe('Rappi Ecommerce Tests for Mobile', () => {
     beforeEach(() => {
-        cy.viewport('iphone-6'); // Configura el viewport para simular un iPhone 6
+        cy.viewport('iphone-6');
         cy.on('uncaught:exception', (err, runnable) => {
             if (err.message.includes('Cache.addAll')) {
-                return false; // Ignorar este error
+                return false;
             }
             return true;
         });

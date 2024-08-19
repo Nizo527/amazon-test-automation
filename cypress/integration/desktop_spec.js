@@ -1,12 +1,10 @@
 describe('Rappi Ecommerce Tests', () => {
-    // Configurar el manejo de excepciones antes de cada prueba
     beforeEach(() => {
         cy.on('uncaught:exception', (err, runnable) => {
-            // Ignorar errores relacionados con Cache.addAll
+            // Ignorar errores relacionados con Cache
             if (err.message.includes('Cache.addAll')) {
                 return false; // Ignorar este error
             }
-            // Permitir que Cypress maneje otros errores
             return true;
         });
 
